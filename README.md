@@ -6,7 +6,7 @@
     https://nodejs.org/en/download/prebuilt-installer
 
 2. Клонируйте репозиторий:
-    git clone <URL вашего репозитория>
+    git clone https://github.com/goldfest/download-manager.git
     cd download-manager
 
 3. Установите зависимости:
