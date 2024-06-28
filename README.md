@@ -7,7 +7,6 @@
 
 2. Клонируйте репозиторий:
     git clone https://github.com/goldfest/download-manager.git
-    cd download-manager
 
 3. Установите зависимости:
     npm install
