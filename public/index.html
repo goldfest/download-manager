@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Manager</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="client.js" defer></script>
+    <style>
+        body {
+            padding: 20px;
+        }
+        #download-status {
+            margin-top: 20px;
+        }
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .download-item button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Download Manager</h1>
+        <div class="input-group mb-3">
+            <input type="text" id="keyword" class="form-control" placeholder="Введите ключевое слово">
+            <div class="input-group-append">
+                <button id="search" class="btn btn-primary">Поиск</button>
+            </div>
+        </div>
+        <button id="clear-storage" class="btn btn-danger mb-3">Очистить локальную память</button>
+        <h2>Доступные URL</h2>
+        <ul id="url-list" class="list-group mb-3"></ul>
+        <h2>Загруженный контент</h2>
+        <ul id="downloaded-list" class="list-group"></ul>
+        <div id="download-status" class="card">
+            <div class="card-body">
+                <h2 class="card-title">Статус загрузки</h2>
+                <p id="download-url" class="card-text"></p>
+                <p id="download-size" class="card-text"></p>
+                <div class="progress mb-3">
+                    <div id="download-progress-bar" class="progress-bar" role="progressbar" style="width: 0;"></div>
+                </div>
+                <p id="download-threads" class="card-text"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
