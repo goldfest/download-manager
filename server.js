@@ -3,6 +3,7 @@ const WebSocket = require('ws');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const os = require('os');
 
 const app = express();
 const port = 3000;
@@ -58,8 +59,22 @@ wss.on('connection', (ws) => {
     });
 });
 
+function getDynamicThreadCount() {
+    // Получаем количество доступных ядер CPU
+    const cpus = os.cpus().length;
+
+    // Получаем свободную память в гигабайтах
+    const freeMemoryGB = os.freemem() / (1024 * 1024 * 1024);
+
+    // Динамически определяем количество потоков на основе ресурсов
+    let threadCount = Math.floor(freeMemoryGB / 0.5); // Один поток на каждые 0.5 ГБ свободной памяти
+    threadCount = Math.max(2, Math.min(threadCount, cpus)); // Минимум 2 потока, максимум количество ядер
+
+    return threadCount;
+}
+
 function downloadContent(ws, url) {
-    const numThreads = 4;  // Количество потоков
+    const numThreads = getDynamicThreadCount();  // Количество потоков
     let downloadedSize = 0;
     let contentSize = 0;
 
